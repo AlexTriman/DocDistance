@@ -1,0 +1,16 @@
+30.09.2016
+	-how to work with std::string library?
+	-how to read words from txt file?
+
+I have learn how to use cin.ignore(32725, '\n') to clear cin from characters
+until symbol in ' '	
+and cin.clear() to clean error flags in cin. 
+I have learned that cin>>var  returns false if the input value was not 
+the same type as var
+I have practiced how to use cin of iostream library
+I have learnd that '\t' means tab
+
+1.10.2016
+	-how to trasfer a file in to arrey of words
+4.10.2016
+	-
