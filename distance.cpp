@@ -15,7 +15,14 @@ double DocDistance (std::vector<std::string> & v1, std::vector<std::string> & v2
 }
 */
 
-void doc_Distance(std::vector<std::string> & v1, std::vector <std::string> & v2){
+void docDist(std::vector<std::string> & d1, std::vector<std::string> & d2)
+{
+	double dot_pr=std::inner_product (d1.begin(), d1.end(), d2.begin(), 0);
+	std::cout << dot_pr << std::endl;
+
+}
+
+void getd1d2(std::vector<std::string> & v1, std::vector <std::string> & v2, std::vector <int> d1, std::vector<int>d2){
 	
 	
 	std::sort(v1.begin(), v1.end());
@@ -24,8 +31,7 @@ void doc_Distance(std::vector<std::string> & v1, std::vector <std::string> & v2)
 	if (v1.size()>=v2.size()) k=v1.size();
 	else k=v2.size();
 	
-	std::vector<int>d1(0,0); // vector d1 with ocuurancy of each word for v1
-	std::vector<int>d2(0,0); // vector d2 with occurancy with each word for v2
+	
 	int n=0;
 	for (int i=0; i<k;) {
 		n=i+1;
@@ -88,7 +94,11 @@ int main () {
 	}
 	infile2.close();
 	
-	doc_Distance(v1,v2);
+	std::vector<int>d1(0,0); // vector d1 with ocuurancy of each word for v1
+	std::vector<int>d2(0,0); // vector d2 with occurancy with each word for v2
+	
+	getd1d2(v1,v2,d1,d2);
+	
 	
 	//show the vector	
 	for (int i=0; i<v1.size(); i++){
