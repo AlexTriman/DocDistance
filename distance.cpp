@@ -46,6 +46,43 @@ void getd1d2(std::vector<std::string> & v1, std::vector <std::string> & v2, std:
 	if (v1.size()>=v2.size()) k=v1.size();
 	else k=v2.size();
 	
+	i=k;
+	while (int i >=0) {
+		
+		//if equal
+		if (v1.back()==v2.back()){
+			std::string word = v1.back();
+			d1.push_back(1);
+			d2.push_back(1);
+			v1.pop_back();
+			v2.pop_back();
+			while (v1.back==word){
+				v1.pop_back();
+				d1.back()++;				
+			}
+			while (v2.back==word){
+				v2.pop_back();
+				d2.back()++;
+			}
+			
+		}
+		else if (v1.back()>v2.back()){
+	
+		}
+		else if (v2.back()>v1.back(){
+		
+		}
+			
+		i=v1.size();		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	int _sameN=0;
