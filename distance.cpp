@@ -47,19 +47,13 @@ void getd1d2(std::vector<std::string> & v1, std::vector <std::string> & v2, std:
 	else k=v2.size();
 	
 	
-	for (int i=0; i<k;) {
-		n=i+1;
-		d1.push_back(1);  //indicate that the word is at least one time occured in vector
-		while (v1[i]==v1[n]) { //how many next words are the same		
-			d1.back()++; //the number of occurancies of the word for v1
-			n++;			
-		}
 	
 	int _sameN=0;
 	int n=0;
-	for (int i=0; i<k;) {
+	for (int i=0; i<v1.size();) {
 		n=i+1;
 		d1.push_back(1);  //indicate that the word is at least one time occured in vector
+		
 		while (v1[i]==v1[n]) { //how many next words are the same		
 			d1.back()++; //the number of occurancies of the word for v1
 			n++;			
@@ -82,7 +76,39 @@ void getd1d2(std::vector<std::string> & v1, std::vector <std::string> & v2, std:
 		i=n;  //skip words that we have cheked 
 	
 	}	
-	// indicate 0 for absent words
+	
+	for (int i=0; i<v2.size();) {
+		bool _skip=false;
+		for (j=0; j<v1.size(); j++){
+			if (v2[i]==v1[j]) {
+				_skip=true;
+				break;
+			}
+		}
+		
+		if (_skip){
+			int f=i+1
+			if (i!=v2.size()-1) {				
+				while(v2[i]==v2[f]){
+				f++;				
+			}
+			
+		}
+		else {
+			d2.push_back[1];
+			d1.push_back[0];
+			int f=i+1;
+			if (i!=v2.size()-1) {				
+				while(v2[i]==v2[f]{
+					f++;
+					d2.back()++;
+				}			
+			}
+		}
+		
+		i=f;
+	}
+	
 	
 	
 	
