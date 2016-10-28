@@ -44,16 +44,21 @@ void getd1d2(std::vector<std::string> & v1, std::vector <std::string> & v2, std:
 	std::sort(v1.begin(), v1.end());
 	std::sort(v2.begin(), v2.end());
 	//show the vector	
+	int k=0;
+	if (v1.size()>=v2.size()) {
+		k=v1.size();
+	}
+	else k=v2.size();
 	
 	
-	for (int i=0; i<v1.size(); i++){
+	for (int i=0; i<k; i++){
 		std::cout << v1[i] << "   "<< v2[i]  <<std::endl;
 	}
 	std::cout <<"good....."<< std::endl;
 	
 			
 	do {
-		
+		std::cout << "size v1: "<< v1.size()<< "  size v2:  "<< v2.size()<< std::endl;
 		//if equal two last words in v1 v2
 		if (v1.back()==v2.back()){
 			std::string word = v1.back();
@@ -61,6 +66,7 @@ void getd1d2(std::vector<std::string> & v1, std::vector <std::string> & v2, std:
 			d2.push_back(1);
 			v1.pop_back();
 			v2.pop_back();
+			std::cout<< "line"<<std::endl;
 			while (v1.back()==word){
 				v1.pop_back();
 				d1.back()++;				
@@ -78,6 +84,7 @@ void getd1d2(std::vector<std::string> & v1, std::vector <std::string> & v2, std:
 			d1.push_back(1);
 			d2.push_back(0);
 			v1.pop_back();
+			std::cout << "v1.back()>v2.back()"<<std::endl;
 			while (v1.back()==word){
 				v1.pop_back();
 				d1.back()++;
@@ -90,14 +97,14 @@ void getd1d2(std::vector<std::string> & v1, std::vector <std::string> & v2, std:
 			d2.push_back(1);
 			d1.push_back(0);
 			v2.pop_back();
+			std::cout<<"v2.back()<v1.back()"<<std::endl;
 			while (v2.back()==word) {
 				v2.pop_back();
 				d2.back()++;
 			}
-		}
-			
-				
-	} while (v1.size()==0 && v2.size()==0);
+		}			
+		
+	} while ((v1.size()!=0) && (v2.size()!=0));
 
 	
 	//display two vectors
