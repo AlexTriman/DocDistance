@@ -7,6 +7,7 @@
 #include <vector>
 #include <cmath>
 #include <numeric>
+#include <time.h>
 
 /*
 double DocDistance (std::vector<std::string> & v1, std::vector<std::string> & v2) {		         
@@ -49,16 +50,9 @@ void getd1d2(std::vector<std::string> & v1, std::vector <std::string> & v2, std:
 		k=v1.size();
 	}
 	else k=v2.size();
-	
-	
-	for (int i=0; i<k; i++){
-		std::cout << v1[i] << "   "<< v2[i]  <<std::endl;
-	}
-	std::cout <<"good....."<< std::endl;
-	
-			
-	do {
-		std::cout << "size v1: "<< v1.size()<< "  size v2:  "<< v2.size()<< std::endl;
+	std::cout << "Кількість слів у найбільшому тексті " << k<<std::endl;
+		
+	do {		
 		//if equal two last words in v1 v2
 		if (v1.back()==v2.back()){
 			std::string word = v1.back();
@@ -66,7 +60,7 @@ void getd1d2(std::vector<std::string> & v1, std::vector <std::string> & v2, std:
 			d2.push_back(1);
 			v1.pop_back();
 			v2.pop_back();
-			std::cout<< "line"<<std::endl;
+		
 			while (v1.back()==word){
 				v1.pop_back();
 				d1.back()++;				
@@ -84,7 +78,7 @@ void getd1d2(std::vector<std::string> & v1, std::vector <std::string> & v2, std:
 			d1.push_back(1);
 			d2.push_back(0);
 			v1.pop_back();
-			std::cout << "v1.back()>v2.back()"<<std::endl;
+		
 			while (v1.back()==word){
 				v1.pop_back();
 				d1.back()++;
@@ -97,7 +91,7 @@ void getd1d2(std::vector<std::string> & v1, std::vector <std::string> & v2, std:
 			d2.push_back(1);
 			d1.push_back(0);
 			v2.pop_back();
-			std::cout<<"v2.back()<v1.back()"<<std::endl;
+		
 			while (v2.back()==word) {
 				v2.pop_back();
 				d2.back()++;
@@ -120,6 +114,12 @@ void getd1d2(std::vector<std::string> & v1, std::vector <std::string> & v2, std:
 
 
 int main () {
+	
+	clock_t t1,t2;
+    t1=clock();
+    //code goes here
+   
+    
 	
 	std::fstream infile1 ("text.txt");
 	
@@ -151,7 +151,10 @@ int main () {
 	getd1d2(v1,v2,d1,d2);
 	docDist(d1,d2);
 	
-	
+	t2=clock();
+	float diff = ((float)t2-(float)t1)/ CLOCKS_PER_SEC;
+    std::cout<< "Estimated program runing time: " << diff<< " c" <<std::endl;    
+    
 	return 0;
 }
 
