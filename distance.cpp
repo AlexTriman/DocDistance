@@ -11,6 +11,7 @@
 
 /*
 double DocDistance (std::vector<std::string> & v1, std::vector<std::string> & v2) {		         
+* 
     std::cout << std::endl << std::inner_product( v1.begin(), v1.end(), v2.begin(), " " ) << std::endl;
 	return 0;
 }
@@ -19,20 +20,14 @@ double DocDistance (std::vector<std::string> & v1, std::vector<std::string> & v2
 void docDist(std::vector<int> &d1, std::vector<int> &d2)
 {
 
-	std::cout << "d1 size = " << d1.size()<< "    d2 size=" << d2.size()<< std::endl;   
-	
-	for (int i=0; i<d1.size(); i++){
-		std::cout << d1[i] << "   "<< d2[i]  <<std::endl;
-	}
-	std::cout <<"good....."<< std::endl;	
-	
-	float num=std::inner_product (d1.begin(), d1.end(), d2.begin(), 0);
+	std::cout << "d1 size = " << d1.size()<< "    d2 size=" << d2.size()<< std::endl;   	
+	double num=std::inner_product (d1.begin(), d1.end(), d2.begin(), 0);
 	std::cout << " num = " << num<< std::endl;
-	float denum = sqrt(std::inner_product (d1.begin(), d1.end(), d1.begin(), 0)*std::inner_product(d2.begin(), d2.end(), d2.begin(),0));
+	double denum = sqrt(std::inner_product (d1.begin(), d1.end(), d1.begin(), 0)*std::inner_product(d2.begin(), d2.end(), d2.begin(),0));
 	std::cout << " denum = " << denum<<std::endl;
 	float doc_dist=acos(num/denum)*180/3.1415;	
 	
-	std::cout << doc_dist << std::endl<< std::endl;
+	std::cout << "Similarity rate: "<< doc_dist << std::endl<< std::endl;
 
 }
 
@@ -44,15 +39,16 @@ void getd1d2(std::vector<std::string> & v1, std::vector <std::string> & v2, std:
 	
 	std::sort(v1.begin(), v1.end());
 	std::sort(v2.begin(), v2.end());
+	std::cout<<"Vectors v1 and v2 are sorted"<<std::endl;
 	//show the vector	
-	int k=0;
-	if (v1.size()>=v2.size()) {
-		k=v1.size();
-	}
-	else k=v2.size();
-	std::cout << "Кількість слів у найбільшому тексті " << k<<std::endl;
 		
-	do {		
+	std::cout << "Number of words in text.txt:  " << v1.size() <<std::endl;
+	std::cout << "Number of words in text2.txt: " << v2.size() <<std::endl<<std::endl;
+		int count=0;
+		do {		
+		
+		count ++;
+		std::cout << count<<std::endl;
 		//if equal two last words in v1 v2
 		if (v1.back()==v2.back()){
 			std::string word = v1.back();
@@ -99,15 +95,9 @@ void getd1d2(std::vector<std::string> & v1, std::vector <std::string> & v2, std:
 		}			
 		
 	} while ((v1.size()!=0) && (v2.size()!=0));
-
 	
-	//display two vectors
-		
-	for (int i=0; i<d1.size(); i++){
-		std::cout << d1[i] << "   "<< d2[i]  <<std::endl;
-	}
-	std::cout <<"good....." << "d1 size = "<< d1.size()<< "  d2.size = "<< d2.size()<< std::endl;		
-	
+	std::cout << "Vectors d1 and d2 have been made"<< std::endl;
+	//display two vectors	
 }
 
 
@@ -144,6 +134,8 @@ int main () {
 		v2.push_back(word);
 	}
 	infile2.close();
+	
+	std::cout <<"Vector v1 and v2 are built"<<std::endl;
 	
 	std::vector<int>d1(0,0); // vector d1 with ocuurancy of each word for v1
 	std::vector<int>d2(0,0); // vector d2 with occurancy with each word for v2

@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1478147056 source:/home/alex/CODE/Algorithm/Lec2/C/DocDistance/DocDistance/main.cpp
+	<fstream>
+	<algorithm>
+	<iterator>
+	<iostream>
+	<string>
+	<cstdlib>
+	<vector>
+	<cmath>
+	<numeric>
+	<time.h>
+
